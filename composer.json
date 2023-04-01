@@ -1,5 +1,6 @@
 {
-    "reqire":{}
-    
+    "reqire":{},
+    "require": {
+        "mikecao/flight": "^2.0"
     }
-    
+}
