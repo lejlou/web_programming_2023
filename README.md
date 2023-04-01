@@ -1,6 +1,9 @@
-# web_project
-Project for Web Programming course 
+# Introduction to Web Programming
 
-TEST EDITING
+## WEB PROJECT 
 
-NEW TEST EDITING 
+## Project done by
+- Lejla Srna (@lejlou https://github.com/lejlou)
+
+## Project description
+
