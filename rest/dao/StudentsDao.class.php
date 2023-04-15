@@ -40,9 +40,9 @@ class StudentsDao {
 
     public function add($first_name, $last_name){
 
-        $stmt = $this->conn -> prepare ("INSERT INTO students (first_name, last_name) VALUES ('$first_name','$last_name')");
-        $result = $stmt -> execute();
-        return $stmt -> fetchAll (PDO::FETCH_ASSOC);
+        $stmt = $this->conn -> prepare ("INSERT INTO students (first_name, last_name) VALUES ('?','?')");
+        $result = $stmt -> execute([$first_name, $last_name]);
+        //return $stmt -> fetchAll (PDO::FETCH_ASSOC);
 
     }
 
@@ -51,17 +51,18 @@ class StudentsDao {
 
     public function update($first_name, $last_name, $id){
 
-        $stmt = $this->conn -> prepare ("UPDATE students SET first_name = '$first_name', last_name = '$last_name' WHERE id = $id");
-        $stmt -> execute();
+        $stmt = $this->conn -> prepare ("UPDATE students SET first_name = ':first_name', last_name = ':last_name' WHERE id = :id");
+        $stmt -> execute(['first_name'=> $first_name, 'last_name'=> $last_name, 'id' => $id]);
         
      }
 
 
      // Method used to delete students from database
 
-    public function delete($first_name, $last_name, $id){
+    public function delete($id){
 
-        $stmt = $this->conn -> prepare ("DELETE FROM students WHERE id = $id");
+        $stmt = $this->conn -> prepare("DELETE FROM students WHERE id = :id");
+        $stmt -> bindParam(':id', $id);
         $stmt -> execute();
         
      }
