@@ -47,6 +47,26 @@ class StudentsDao {
     }
 
 
+    // Method used to update students from database
+
+    public function update($first_name, $last_name, $id){
+
+        $stmt = $this->conn -> prepare ("UPDATE students SET first_name = '$first_name', last_name = '$last_name' WHERE id = $id");
+        $stmt -> execute();
+        
+     }
+
+
+     // Method used to delete students from database
+
+    public function delete($first_name, $last_name, $id){
+
+        $stmt = $this->conn -> prepare ("DELETE FROM students WHERE id = $id");
+        $stmt -> execute();
+        
+     }
+
+
 }
 
 ?>
